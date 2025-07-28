@@ -49,7 +49,12 @@
 			<artifactId>opentelemetry-exporter-otlp</artifactId>
 		</dependency>
 
-
+		<dependency>
+			<groupId>io.opentelemetry.instrumentation</groupId>
+			<artifactId>opentelemetry-logback-appender-1.0</artifactId>
+			<version>1.28.0-alpha</version>
+			<scope>runtime</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
