@@ -2,16 +2,17 @@
 <configuration>
     <springProperty scope="context" name="appName" source="otel.service.name"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+        <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [traceId=%X{traceId},spanId=%X{spanId}] - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <appender name="OTEL" class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
-        <appender-ref ref="CONSOLE"/>
+    <appender name="OTLP_LOG" class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
+        <!-- 默认使用全局 OpenTelemetry 实例 -->
     </appender>
 
     <root level="INFO">
-        <appender-ref ref="OTEL"/>
+        <appender-ref ref="OTLP_LOG"/>
+        <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>
